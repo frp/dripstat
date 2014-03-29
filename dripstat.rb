@@ -1,9 +1,6 @@
 require 'selenium-webdriver'
 
 class DripStatGame
-  SLEEP = 0.01
-  SHOPPING_COUNTER = 100
-  CAPACITY_COUNTER = 100
 
   def initialize
     @driver = Selenium::WebDriver.for :firefox
