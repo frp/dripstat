@@ -1,14 +1,5 @@
 require 'selenium-webdriver'
 
-def set_interval delay
-  Thread.new do
-    loop do
-      sleep delay
-      yield
-    end
-  end
-end
-
 class DripStatGame
   SLEEP = 0.01
   SHOPPING_COUNTER = 100
@@ -35,9 +26,6 @@ class DripStatGame
       shopping
       increase_capacity
     end
-#    set_interval 1200 do increase_capacity end
-#    set_interval 10 do shopping end
-#    set_interval 0.01 do clicker end
   end
 
   def increase_capacity
@@ -66,9 +54,6 @@ class DripStatGame
   rescue Selenium::WebDriver::Error::NoSuchElementError
   end
 end
-
-puts ARGV[0]
-puts ARGV[1]
 
 game = DripStatGame.new
 game.login ARGV[0], ARGV[1]
