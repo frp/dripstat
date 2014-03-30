@@ -3,7 +3,7 @@ require 'selenium-webdriver'
 class DripStatGame
 
   def initialize
-    @driver = Selenium::WebDriver.for :firefox
+    @driver = Selenium::WebDriver.for :chrome
   end
 
   def login username, password
@@ -20,7 +20,7 @@ class DripStatGame
     loop do
       counter += 1
       clicker
-      if counter == 10
+      if counter == 100
         shopping
         increase_capacity
         counter = 0
@@ -39,7 +39,7 @@ class DripStatGame
   def clicker
     element = @driver.find_element(:id, 'btn-addMem')
     @driver.action.click_and_hold(element).release.perform
-    puts "click"
+    #puts "click"
   end
 
   def shopping
