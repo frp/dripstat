@@ -20,8 +20,11 @@ class DripStatGame
     loop do
       counter += 1
       clicker
-      shopping
-      increase_capacity
+      if counter == 10
+        shopping
+        increase_capacity
+        counter = 0
+      end
     end
   end
 
@@ -35,7 +38,7 @@ class DripStatGame
 
   def clicker
     element = @driver.find_element(:id, 'btn-addMem')
-    @driver.action.click(element).perform
+    @driver.action.click_and_hold(element).release.perform
     puts "click"
   end
 
@@ -44,7 +47,7 @@ class DripStatGame
     children = @driver.find_elements(:class, 'storeItem')
     (children.length - 1).downto(0).each do |x|
       if children[x].attribute('class') == 'storeItem'
-        @driver.action.click(children[x]).perform
+        @driver.action.click_and_hold(children[x]).release.perform
         break
       end
     end
