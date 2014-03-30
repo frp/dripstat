@@ -13,6 +13,7 @@ class DripStatGame
     @driver.find_element(:name, 'username').submit
     sleep(5)
     @driver.get("https://dripstat.com/game")
+    @driver.execute_script("document.hasFocus = function() {return true;}")
   end
 
   def run
